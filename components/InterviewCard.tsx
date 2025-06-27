@@ -55,8 +55,8 @@ const InterviewCard = (interview: InterviewCardProps) => {
             <Link
               href={
                 feedback
-                  ? `/interview/${interview.interviewId}/feedback`
-                  : `/interview/${interview.interviewId}`
+                  ? `/interview/${interview.id}/feedback`
+                  : `/interview/${interview.id}`
               }
             >
               {feedback ? "Check Feedback" : "View Interview"}
