@@ -5,8 +5,15 @@ import { getRandomInterviewCover } from "@/lib/utils";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import DisplayTechIcons from "./DisplayTechIcons";
-const InterviewCard = (interview: InterviewCardProps) => {
-  const feedback = null as Feedback | null;
+import { getFeedbackByInterviewId } from "@/lib/actions/general.action";
+const InterviewCard = async (interview: InterviewCardProps) => {
+  const feedback =
+    interview.id && interview.userId
+      ? await getFeedbackByInterviewId({
+          interviewId: interview.id,
+          userId: interview.userId,
+        })
+      : null;
   const normalizedType = /mix/gi.test(interview.type)
     ? "Mixed"
     : interview.type;
